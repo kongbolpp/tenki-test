@@ -36,6 +36,11 @@
     <Compile Include="Data\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ServiceRegistrar.cs" />
+    <Compile Include="Utilities\ServiceContainer.cs" />
+    <Compile Include="Utilities\TaskExtensions.cs" />
+    <Compile Include="IHomeService.cs" />
+    <Compile Include="Data\HomeService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
