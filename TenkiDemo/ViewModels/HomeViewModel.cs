@@ -6,11 +6,12 @@ namespace TenkiDemo.ViewModels
 	{
 		public HomeViewModel ()
 		{
+		
 		}
 
 		public string GetApiData ()
 		{
-			return "Hello World!!";
+			return "Hello World!~";
 		}
 	}
 }
