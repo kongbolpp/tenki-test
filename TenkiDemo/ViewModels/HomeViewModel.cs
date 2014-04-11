@@ -11,6 +11,7 @@ namespace TenkiDemo.ViewModels
 
 		public string GetApiData ()
 		{
+			// TODO　ＤＥＬ
 			return "Hello World!~";
 		}
 	}
