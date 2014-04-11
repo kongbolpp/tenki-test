@@ -19,6 +19,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TenkiDemo.ViewModels;
+using Newtonsoft.Json;
 
 	namespace TenkiDemo.Data {
 
@@ -30,11 +32,34 @@ using System.Threading.Tasks;
 
         private const int Sleep = 1000;
 
+		public HomeViewModel GetWeather(string strCityName){
+
+			var webClient = new System.Net.WebClient();
+
+			var getJsonUrl = webClient.DownloadString("http://www.weather.com.cn/data/sk/"+strCityName+".html");
+
+			//透過JSON.net 反序列化為User物件
+			var weather = JsonConvert.DeserializeObject<HomeViewModel>(getJsonUrl);
+			Console.Write("weather.city={0},weather.cityid={1}",weather.city,weather.cityid);
+			return weather;
+		}
+
+
+
+
+
 			public Task<bool> HomeAsync (string username, string password, CancellationToken cancellationToken = default(CancellationToken))
         {
+			//JSONObject jo = JObject.Parse(jsonText);
+			//string []values = jo.Properties().Select(item => item.Value.ToString()).ToArray();
+
+
             return Task.Factory.StartNew (() => {
 #if NETFX_CORE
+
                 new System.Threading.ManualResetEvent(false).WaitOne(Sleep);
+
+
 #else
                 Thread.Sleep (Sleep);
 #endif

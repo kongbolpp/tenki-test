@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TenkiDemo.ViewModels;
 
 namespace TenkiDemo {
 
@@ -31,5 +32,15 @@ namespace TenkiDemo {
 		/// Asynchronous home
         /// </summary>
 		Task<bool> HomeAsync (string username, string password, CancellationToken cancellationToken = default(CancellationToken));
-    }
+
+
+		/// <summary>
+		/// Gets the weather.
+		/// </summary>
+		/// <returns>The weather.</returns>
+		/// <param name="strCityName">String city name.</param>
+		 HomeViewModel GetWeather (string strCityName);
+
+
+	}
 }
