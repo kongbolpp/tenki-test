@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.IO;
+using TenkiDemo;
 
 namespace Corpy {
     [Application]
@@ -21,24 +22,7 @@ namespace Corpy {
 
         public override void OnCreate()
         {
-            if (!EmployeeManager.HasDataAlready) {
-                Console.WriteLine("MAIN Load Employees.xml");
-                Stream seedDataStream = Assets.Open(@"Employees.xml");
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                using (StreamReader reader = new StreamReader(seedDataStream)) {
-                    //This is an arbitrary size for this example.
-                    char[] c = null;
-
-                    while (reader.Peek() >= 0) {
-                        c = new char[4096];
-                        reader.Read(c, 0, c.Length);
-                        sb.Append(c);
-                    }
-                }
-                string xml = sb.ToString();
-
-                EmployeeManager.UpdateFromString(xml);
-            }
+			ServiceRegistrar.Startup ();
         }
     }
 }

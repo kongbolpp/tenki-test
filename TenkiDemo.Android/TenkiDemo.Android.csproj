@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>TenkiDemo.Android</AssemblyName>
-    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,8 +50,24 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="..\TenkiDemo\Data\HomeService.cs">
+      <Link>TenkiDemo\Data\HomeService.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Data\IHomeService.cs">
+      <Link>TenkiDemo\Data\IHomeService.cs</Link>
+    </Compile>
     <Compile Include="..\TenkiDemo\Data\PropertyChangedBase.cs">
       <Link>TenkiDemo\Data\PropertyChangedBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Data\ServiceRegistrar.cs">
+      <Link>TenkiDemo\Data\ServiceRegistrar.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\ServiceContainer.cs">
+      <Link>TenkiDemo\Utilities\ServiceContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\TaskExtensions.cs">
+      <Link>TenkiDemo\Utilities\TaskExtensions.cs</Link>
     </Compile>
     <Compile Include="..\TenkiDemo\ViewModels\HomeViewModel.cs">
       <Link>TenkiDemo\ViewModels\HomeViewModel.cs</Link>
