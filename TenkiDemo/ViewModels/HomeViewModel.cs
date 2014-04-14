@@ -1,18 +1,54 @@
 ﻿using System;
+using TenkiDemo.Utilities;
+using System.Threading.Tasks;
 
 namespace TenkiDemo.ViewModels
 {
 	public class HomeViewModel : ViewModelBase
 	{
-		//public HomeViewModel ()
-		//{
-		//}
-		public string city{ get; set;}              // city name
-		public string date_y{ get; set;}            // date  yyyy/MM/dd
-		public string week{ get; set;}              // week
-		public string fchh{ get; set;}              // forecast release time
-		public string cityid{ get; set;}            // city_id
-		public string temp1{ get; set;}             //00:00-04:00 temperature(℃)
+		readonly IHomeService service;
+		string cityCode;
+
+		public HomeViewModel ()
+		{
+			service = ServiceContainer.Resolve<IHomeService> ();
+		}
+
+		/// <summary>
+		/// cityCode property
+		/// </summary>
+		public string CityCode
+		{
+			get { return cityCode; }
+			set
+			{
+				cityCode = value;
+				Validate ();
+				OnPropertyChanged ("CityCode");
+			}
+		}
+
+		/// <summary>
+		/// Performs an asynchronous login
+		/// </summary>
+		/// <returns></returns>
+		public Task<bool> HomeAsync ()
+		{
+			IsBusy = true;
+			return service
+					.HomeAsync (cityCode)
+					.ContinueOnCurrentThread (t => {
+						IsBusy = false; 
+						return t.Result;
+					});
+		}
+
+		public string city{ get; set;}              //城市
+		public string date_y{ get; set;}            //日期 yyyy年MM月dd日
+		public string week{ get; set;}              //星期
+		public string fchh{ get; set;}              //预报发布时间
+		public string cityid{ get; set;}            //城市id
+		public string temp1{ get; set;}             //00:00-04:00 温度（摄氏度）
 		public string temp2{ get; set;}             //
 		public string temp3{ get; set;}             //
 		public string temp4{ get; set;}             //
@@ -88,15 +124,6 @@ namespace TenkiDemo.ViewModels
 		public string index_cl{ get; set;}          //
 		public string index_ls{ get; set;}          //
 		public string index_ag{ get; set;}          //
-
-
-
-		public string GetApiData ()        
-		{                              
-			return "Hello World!~";                  
-		}                          
-
 	}
-
 }
 
