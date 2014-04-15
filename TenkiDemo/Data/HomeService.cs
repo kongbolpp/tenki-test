@@ -48,7 +48,7 @@ using System.IO;
                 new System.Threading.ManualResetEvent(false).WaitOne(Sleep);
 #else
 				string method = "GET";
-				string url = "http://www.weather.com.cn/data/sk/"+strCityName+".html";
+				string url = "http://www.weather.com.cn/data/sk/"+cityCode+".html";
 				//			CookieContainer cookieContainer ;
 
 				HttpWebRequest httpWebRequest = null;
