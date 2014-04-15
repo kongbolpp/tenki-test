@@ -1,6 +1,7 @@
 ﻿using System;
-using TenkiDemo.Utilities;
 using System.Threading.Tasks;
+using TenkiDemo.ViewModels;
+using TenkiDemo.Utilities;
 
 namespace TenkiDemo.ViewModels
 {
@@ -8,47 +9,12 @@ namespace TenkiDemo.ViewModels
 	{
 		readonly IHomeService service;
 		string cityCode;
-
-		public HomeViewModel ()
-		{
-			service = ServiceContainer.Resolve<IHomeService> ();
-		}
-
-		/// <summary>
-		/// cityCode property
-		/// </summary>
-		public string CityCode
-		{
-			get { return cityCode; }
-			set
-			{
-				cityCode = value;
-				Validate ();
-				OnPropertyChanged ("CityCode");
-			}
-		}
-
-		/// <summary>
-		/// Performs an asynchronous login
-		/// </summary>
-		/// <returns></returns>
-		public Task<bool> HomeAsync ()
-		{
-			IsBusy = true;
-			return service
-					.HomeAsync (cityCode)
-					.ContinueOnCurrentThread (t => {
-						IsBusy = false; 
-						return t.Result;
-					});
-		}
-
-		public string city{ get; set;}              //城市
-		public string date_y{ get; set;}            //日期 yyyy年MM月dd日
-		public string week{ get; set;}              //星期
+		string city;              //城市
+		string date_y;           //日期 yyyy年MM月dd日
+		string week;              //星期
 		public string fchh{ get; set;}              //预报发布时间
 		public string cityid{ get; set;}            //城市id
-		public string temp1{ get; set;}             //00:00-04:00 温度（摄氏度）
+		string temp1;             //00:00-04:00 温度（摄氏度）
 		public string temp2{ get; set;}             //
 		public string temp3{ get; set;}             //
 		public string temp4{ get; set;}             //
@@ -124,6 +90,96 @@ namespace TenkiDemo.ViewModels
 		public string index_cl{ get; set;}          //
 		public string index_ls{ get; set;}          //
 		public string index_ag{ get; set;}          //
+
+		public HomeViewModel ()
+		{
+			service = ServiceContainer.Resolve<IHomeService> ();
+		}
+
+		/// <summary>
+		/// cityCode property
+		/// </summary>
+		public string CityCode
+		{
+			get { return cityCode; }
+			set
+			{
+				cityCode = value;
+				Validate ();
+				OnPropertyChanged ("CityCode");
+			}
+		}
+
+		/// <summary>
+		/// city property
+		/// </summary>
+		public string City
+		{
+			get { return city; }
+			set
+			{
+				city = value;
+				Validate ();
+				OnPropertyChanged ("City");
+			}
+		}
+		/// <summary>
+		/// date_y property
+		/// </summary>
+		public string Date_y
+		{
+			get { return date_y; }
+			set
+			{
+				date_y = value;
+				Validate ();
+				OnPropertyChanged ("Date_y");
+			}
+		}
+		/// <summary>
+		/// week property
+		/// </summary>
+		public string Week
+		{
+			get { return week; }
+			set
+			{
+				week = value;
+				Validate ();
+				OnPropertyChanged ("Week");
+			}
+		}
+		/// <summary>
+		/// temp1 property
+		/// </summary>
+		public string Temp1
+		{
+			get { return temp1; }
+			set
+			{
+				temp1 = value;
+				Validate ();
+				OnPropertyChanged ("Temp1");
+			}
+		}
+
+
+		/// <summary>
+		/// Performs an asynchronous login
+		/// </summary>
+		/// <returns></returns>
+		public Task<bool> HomeAsync ()
+		{
+			IsBusy = true;
+			return service
+					.HomeAsync (cityCode)
+					.ContinueOnCurrentThread (t => {
+						IsBusy = false; 
+						return t.Result;
+					});
+		}
+
+
 	}
 }
 
