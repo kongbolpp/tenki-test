@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 using TenkiDemo.ViewModels;
 using System.Net;
 using System.IO;
-
+using TenkiDemo.Utilities;
+using System.Collections.Generic;
 
 
 	namespace TenkiDemo.Data {
@@ -42,9 +43,10 @@ using System.IO;
 		}
 
 
-		public Task<Dictionary<string,string>> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<Hashtable> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken))
 		{
-			Dictionary<string, string> dic = new Dictionary<string, string>();
+			//Dictionary<string, string> dic = new Dictionary<string, string>();
+			Hashtable weatherInfo = new Hashtable();
             return Task.Factory.StartNew (() => {
 #if NETFX_CORE
                 new System.Threading.ManualResetEvent(false).WaitOne(Sleep);
@@ -82,41 +84,39 @@ using System.IO;
 
 
 					Console.Write("***********{0}************",jsonString);
-					string myJson = jsonString.Substring(("{\"weatherinfo\":{").ToString().Count(),jsonString.Count()-3);
-
-
-					string[] fields = myJson.Split(',');
-
-					for (int i = 0; i < fields.Length; i++ ) 
-
-					{ 
-						string[] keyvalue = fields[i].Split(':'); 
-						dic.Add(Filter(keyvalue[0]), Filter(keyvalue[1])); 
-
-					}  
+				
+					Hashtable jsonObj = (Hashtable)JSON.JsonDecode(jsonString);
+					Console.Write("***********{0}************",jsonObj["weatherinfo"]);
+						//					string myJson = jsonString.Substring(("{\"weatherinfo\":{").ToString().Count(),jsonString.Count()-3);
+//
+//
+//					string[] fields = myJson.Split(',');
+//
+//					for (int i = 0; i < fields.Length; i++ ) 
+//
+//					{ 
+//						string[] keyvalue = fields[i].Split(':'); 
+//						dic.Add(Filter(keyvalue[0]), Filter(keyvalue[1])); 
+//
+//					}  
 
 					try {
-						//	HomeViewModel homeViewModel = JsonMapper.ToObject<HomeViewModel>(jsonString);
+						//JSON json = new JSON();
+						Hashtable hashTable = (Hashtable)JSON.JsonDecode(jsonString);
 
-
+						weatherInfo = (Hashtable)hashTable["weatherinfo"];
 
 					} catch (Exception e) {
 						Console.WriteLine("  Exception caught: {0}", e.Message);
 					}
-				
-
-
-
-
-				}
-				catch (Exception)
+				} catch (Exception)
 				{
 
 				}
                 Thread.Sleep (Sleep);
 #endif
 
-				return dic;
+				return weatherInfo;
             }, cancellationToken);
         }
     }

@@ -3,95 +3,23 @@ using System.Threading.Tasks;
 using TenkiDemo.ViewModels;
 using TenkiDemo.Utilities;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace TenkiDemo.ViewModels
 {
 	public class HomeViewModel : ViewModelBase
 	{
 		readonly IHomeService service;
-		Dictionary<string,string> dic = new Dictionary<string, string>();
+		Hashtable hashTable = new Hashtable ();
 		string cityCode;
-		string city;              //城市
-		string date_y;           //日期 yyyy年MM月dd日
-		string week;              //星期
-		public string fchh{ get; set;}              //预报发布时间
-		public string cityid{ get; set;}            //城市id
-		string temp1;             //00:00-04:00 温度（摄氏度）
-		public string temp2{ get; set;}             //
-		public string temp3{ get; set;}             //
-		public string temp4{ get; set;}             //
-		public string temp5{ get; set;}             //
-		public string temp6{ get; set;}             //
-		public string tempF1{ get; set;}            //00:00-04:00 temperature(℉)
-		public string tempF2{ get; set;}            //
-		public string tempF3{ get; set;}            //
-		public string tempF4{ get; set;}            //
-		public string tempF5{ get; set;}            //
-		public string tempF6{ get; set;}            //
-		public string weather1{ get; set;}          //00:00-04:00 detail
-		public string weather2{ get; set;}          //
-		public string weather3{ get; set;}          //
-		public string weather4{ get; set;}          //
-		public string weather5{ get; set;}          //
-		public string weather6{ get; set;}          //
-		public string img1{ get; set;}              //00:00-01:00 weather picture code
-		public string img2{ get; set;}              //
-		public string img3{ get; set;}              //
-		public string img4{ get; set;}              //
-		public string img5{ get; set;}              //
-		public string img6{ get; set;}              //
-		public string img7{ get; set;}              //
-		public string img8{ get; set;}              //
-		public string img9{ get; set;}              //
-		public string img10{ get; set;}             //
-		public string img11{ get; set;}             //
-		public string img12{ get; set;}             //
-		public string img_single{ get; set;}        // ？？
-		public string img_title1{ get; set;}        // 00:00-01:00 weather description
-		public string img_title2{ get; set;}        //
-		public string img_title3{ get; set;}        //
-		public string img_title4{ get; set;}        //
-		public string img_title5{ get; set;}        //
-		public string img_title6{ get; set;}        //
-		public string img_title7{ get; set;}        //
-		public string img_title8{ get; set;}        //
-		public string img_title9{ get; set;}        //
-		public string img_title10{ get; set;}       //
-		public string img_title11{ get; set;}       //
-		public string img_title12{ get; set;}       //
-		public string img_title_single{ get; set;}  // ??
-		public string wind1{ get; set;}             //00:00-04:00 Wind direction and rank
-		public string wind2{ get; set;}             //
-		public string wind3{ get; set;}             //
-		public string wind4{ get; set;}             //
-		public string wind5{ get; set;}             //
-		public string wind6{ get; set;}             //
-		public string fx1{ get; set;}               //00:00-00:12 Wind direction
-		public string fx2{ get; set;}               //00:12-00:24 Wind direction
-		public string fl1{ get; set;}               //00:00-04:00 rank
-		public string fl2{ get; set;}               //
-		public string fl3{ get; set;}               //
-		public string fl4{ get; set;}               //
-		public string fl5{ get; set;}               //
-		public string fl6{ get; set;}               //
-		public string index{ get; set;}             // body feeling
-		public string index_d{ get; set;}           // suggestions
-		public string index48{ get; set;}           // body feeling
-		public string ndex48_d{ get; set;}          // suggestions
-		public string index_uv{ get; set;}          //
-		public string index48_uv{ get; set;}        //
-		public string index_xc{ get; set;}          //
-		public string index_tr{ get; set;}          //
-		public string index_co{ get; set;}          //
-		public string st1{ get; set;}               //
-		public string st2{ get; set;}               //
-		public string st3{ get; set;}               //
-		public string st4{ get; set;}               //
-		public string st5{ get; set;}               //
-		public string st6{ get; set;}               //
-		public string index_cl{ get; set;}          //
-		public string index_ls{ get; set;}          //
-		public string index_ag{ get; set;}          //
+		string city;                                 //city
+		string weather;                              //weather
+		string ptime;                                //weather_forecast_time
+		string cityid;                               //cityid
+		string temp1;                                //highest temperature	
+		string temp2;                                //lowest temperature
+		string img1;                                 //weather picture code1
+		string img2;                                 //weather picture code2
 
 		public HomeViewModel ()
 		{
@@ -111,7 +39,6 @@ namespace TenkiDemo.ViewModels
 				OnPropertyChanged ("CityCode");
 			}
 		}
-
 		/// <summary>
 		/// city property
 		/// </summary>
@@ -125,30 +52,44 @@ namespace TenkiDemo.ViewModels
 				OnPropertyChanged ("City");
 			}
 		}
+
 		/// <summary>
-		/// date_y property
+		/// city property
 		/// </summary>
-		public string Date_y
+		public string Weather
 		{
-			get { return date_y; }
+			get { return weather; }
 			set
 			{
-				date_y = value;
+				weather = value;
 				Validate ();
-				OnPropertyChanged ("Date_y");
+				OnPropertyChanged ("Weather");
 			}
 		}
 		/// <summary>
-		/// week property
+		/// ptime property
 		/// </summary>
-		public string Week
+		public string Ptime
 		{
-			get { return week; }
+			get { return ptime; }
 			set
 			{
-				week = value;
+				ptime = value;
 				Validate ();
-				OnPropertyChanged ("Week");
+				OnPropertyChanged ("Ptime");
+			}
+		}
+		/// <summary>
+		/// cityid property
+		/// </summary>
+		public string Cityid
+		{
+			get { return cityid; }
+			set
+			{
+				cityid = value;
+				Validate ();
+				OnPropertyChanged ("Cityid");
 			}
 		}
 		/// <summary>
@@ -164,18 +105,58 @@ namespace TenkiDemo.ViewModels
 				OnPropertyChanged ("Temp1");
 			}
 		}
-
 		/// <summary>
-		/// dic property
+		/// temp2 property
 		/// </summary>
-		public Dictionary<string, string> Dic
+		public string Temp2
 		{
-			get { return dic; }
+			get { return temp2; }
 			set
 			{
-				dic = value;
+				temp2 = value;
 				Validate ();
-				OnPropertyChanged ("Dic");
+				OnPropertyChanged ("Temp2");
+			}
+		}
+		/// <summary>
+		/// img1 property
+		/// </summary>
+		public string Img1
+		{
+			get { return img1; }
+			set
+			{
+				img1 = value;
+				Validate ();
+				OnPropertyChanged ("Img1");
+			}
+		}
+		/// <summary>
+		/// img2 property
+		/// </summary>
+		public string Img2
+		{
+			get { return img2; }
+			set
+			{
+				img2 = value;
+				Validate ();
+				OnPropertyChanged ("Img2");
+			}
+		}
+
+
+		/// <summary>
+		/// hashTable property
+		/// </summary>
+		public Hashtable HashTable
+		{
+			get { return hashTable; }
+			set
+			{
+				hashTable = value;
+				Validate ();
+				OnPropertyChanged ("HashTable");
 			}
 		}
 
@@ -183,7 +164,7 @@ namespace TenkiDemo.ViewModels
 		/// Performs an asynchronous login
 		/// </summary>
 		/// <returns></returns>
-		public Task<Dictionary<string, string>> HomeAsync ()
+		public Task<Hashtable> HomeAsync ()
 		{
 			IsBusy = true;
 
@@ -195,8 +176,8 @@ namespace TenkiDemo.ViewModels
 						//homeViewModel.Temp1 = dic["temp1"];
 						//homeViewModel.Date_y = dic["date_y"];
 						IsBusy = false;
-						dic = t.Result;
-						return dic;
+						hashTable = t.Result;
+						return hashTable;
 					});
 		}
 	}

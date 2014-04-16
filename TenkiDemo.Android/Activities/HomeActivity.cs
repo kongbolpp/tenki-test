@@ -54,10 +54,9 @@ namespace TenkiDemo.Android
 				.HomeAsync ()
 				.ContinueWith (_ => {
 					RunOnUiThread (() => {
-						Dictionary<string, string> dic = homeViewModel.Dic;
 						//homeViewModel.dic["city"];
-						Toast.MakeText (this,"******************"+homeViewModel.Dic["city"]+"*****************",0).Show();
-						Console.Write("**************{0}******************",homeViewModel.Dic.ToString());
+						Toast.MakeText (this,"******************"+homeViewModel.HashTable["city"]+"*****************",0).Show();
+						Console.Write("**************{0}******************",homeViewModel.HashTable.ToString());
 						//StartActivity (typeof (AssignmentTabActivity));
 					});
 				});

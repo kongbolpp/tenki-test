@@ -44,6 +44,7 @@
     <Compile Include="Data\HomeService.cs" />
     <Compile Include="Data\IHomeService.cs" />
     <Compile Include="Data\ServiceRegistrar.cs" />
+    <Compile Include="Utilities\JSON.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

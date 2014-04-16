@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>TenkiDemo.Android</AssemblyName>
-    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,9 +45,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -71,6 +69,9 @@
     </Compile>
     <Compile Include="..\TenkiDemo\Utilities\TaskExtensions.cs">
       <Link>TenkiDemo\Utilities\TaskExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\JSON.cs">
+      <Link>TenkiDemo\Utilities\JSON.cs</Link>
     </Compile>
     <Compile Include="..\TenkiDemo\ViewModels\HomeViewModel.cs">
       <Link>TenkiDemo\ViewModels\HomeViewModel.cs</Link>
@@ -96,5 +97,6 @@
     <Folder Include="Fragments\" />
     <Folder Include="Utilities\" />
     <Folder Include="TenkiDemo\" />
+    <Folder Include="TenkiDemo\ViewModels\" />
   </ItemGroup>
 </Project>
