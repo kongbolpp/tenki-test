@@ -19,12 +19,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="15°"
+            android:textSize="80sp"
+            android:textColor="@color/white"
             android:id="@+id/temperature" />
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/climate" />
-        <TextView
+            android:id="@+id/climate"
+            android:src="@drawable/icon1"
+            android:background="@color/transparent" />
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dateTime" />

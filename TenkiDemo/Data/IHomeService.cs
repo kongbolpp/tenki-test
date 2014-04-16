@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TenkiDemo.ViewModels;
 
 namespace TenkiDemo {
 
@@ -30,6 +31,8 @@ namespace TenkiDemo {
         /// <summary>
 		/// Asynchronous home
         /// </summary>
-		Task<bool> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken));
+		Task<Dictionary<string,string>> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken));
+
+		void GetWeather (string strCityName);
     }
 }

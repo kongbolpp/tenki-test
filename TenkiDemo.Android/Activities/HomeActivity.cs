@@ -7,6 +7,7 @@ using Android.Widget;
 using Android.OS;
 using TenkiDemo.ViewModels;
 using TenkiDemo.Utilities;
+using System.Collections.Generic;
 
 namespace TenkiDemo.Android
 {
@@ -37,32 +38,31 @@ namespace TenkiDemo.Android
 		{
 			base.OnCreate (bundle);
 
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
-			temperature = FindViewById<TextView> (Resource.Id.temperature);
-			climate = FindViewById<TextView> (Resource.Id.climate);
-			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
-
-			//cityCode.TextChanged += (sender, e) => {
-			//		homeViewModel.CityCode = userName.Text;
-			//	editsTest.Text = homeViewModel.Username;
-			//};
-
 			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
 			this.ActionBar.SetDisplayShowCustomEnabled(true);
 			this.ActionBar.SetDisplayShowHomeEnabled(false); 
 			this.ActionBar.SetDisplayShowTitleEnabled(false); 
 			this.ActionBar.CustomView = customNav;
 
+			// Set our view from the "main" layout resource
+			SetContentView (Resource.Layout.Main);
+			temperature = FindViewById<TextView> (Resource.Id.temperature);
+			climate = FindViewById<TextView> (Resource.Id.climate);
+			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
+			cityCode = FindViewById<TextView> (Resource.Id.cityCode);
+			homeViewModel.CityCode = "101070201";
+
 			homeViewModel
 				.HomeAsync ()
 				.ContinueWith (_ => {
 					RunOnUiThread (() => {
-
+						Dictionary<string, string> dic = homeViewModel.Dic;
+						//homeViewModel.dic["city"];
+						Toast.MakeText (this,"******************"+homeViewModel.Dic["city"]+"*****************",0).Show();
+						Console.Write("**************{0}******************",homeViewModel.Dic.ToString());
 						//StartActivity (typeof (AssignmentTabActivity));
 					});
 				});
-
 			// Get our button from the layout resource,
 			// and attach an event to it
 			//Button button = FindViewById<Button> (Resource.Id.myButton);
