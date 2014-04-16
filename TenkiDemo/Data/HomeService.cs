@@ -9,6 +9,7 @@ using System.Net;
 using System.IO;
 
 
+
 	namespace TenkiDemo.Data {
 
     /// <summary>
@@ -41,14 +42,17 @@ using System.IO;
 		}
 
 
-		public Task<bool> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken))
-        {
+		public Task<Dictionary<string,string>> HomeAsync (string cityCode, CancellationToken cancellationToken = default(CancellationToken))
+		{
+			Dictionary<string, string> dic = new Dictionary<string, string>();
             return Task.Factory.StartNew (() => {
 #if NETFX_CORE
                 new System.Threading.ManualResetEvent(false).WaitOne(Sleep);
 #else
+
 				string method = "GET";
-				string url = "http://www.weather.com.cn/data/sk/"+cityCode+".html";
+				string urlStr = "http://www.weather.com.cn/data/sk/"+cityCode+".html";
+				Uri url = new Uri(urlStr);
 				//			CookieContainer cookieContainer ;
 
 				HttpWebRequest httpWebRequest = null;
@@ -75,10 +79,11 @@ using System.IO;
 
 					httpWebRequest.Abort();
 					httpWebResponse.Close();
-					Console.Write("***********{0}************",jsonString);
 
+
+					Console.Write("***********{0}************",jsonString);
 					string myJson = jsonString.Substring(("{\"weatherinfo\":{").ToString().Count(),jsonString.Count()-3);
-					Dictionary<string, string> dic = new Dictionary<string, string>(); 
+
 
 					string[] fields = myJson.Split(',');
 
@@ -89,11 +94,17 @@ using System.IO;
 						dic.Add(Filter(keyvalue[0]), Filter(keyvalue[1])); 
 
 					}  
-					HomeViewModel homeViewModel = new HomeViewModel();
-					homeViewModel.City = dic["city"];
-					homeViewModel.Week = dic["week"];
-					homeViewModel.Temp1 = dic["temp1"];
-					homeViewModel.Date_y = dic["date_y"];
+
+					try {
+						//	HomeViewModel homeViewModel = JsonMapper.ToObject<HomeViewModel>(jsonString);
+
+
+
+					} catch (Exception e) {
+						Console.WriteLine("  Exception caught: {0}", e.Message);
+					}
+				
+
 
 
 
@@ -105,7 +116,7 @@ using System.IO;
                 Thread.Sleep (Sleep);
 #endif
 
-                return true;
+				return dic;
             }, cancellationToken);
         }
     }

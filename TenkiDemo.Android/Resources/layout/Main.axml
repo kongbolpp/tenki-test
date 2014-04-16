@@ -12,6 +12,21 @@
         android:text="cityCode"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="116.2dp"
-        android:layout_height="21.6dp"
+        android:layout_height="wrap_content"
         android:id="@+id/cityCode" />
+    <TextView
+        android:text="cityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cityName" />
+    <TextView
+        android:text="temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/temperature" />
+    <TextView
+        android:text="week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/week" />
 </LinearLayout>

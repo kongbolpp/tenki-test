@@ -2,12 +2,14 @@
 using System.Threading.Tasks;
 using TenkiDemo.ViewModels;
 using TenkiDemo.Utilities;
+using System.Collections.Generic;
 
 namespace TenkiDemo.ViewModels
 {
 	public class HomeViewModel : ViewModelBase
 	{
 		readonly IHomeService service;
+		Dictionary<string,string> dic = new Dictionary<string, string>();
 		string cityCode;
 		string city;              //城市
 		string date_y;           //日期 yyyy年MM月dd日
@@ -163,23 +165,40 @@ namespace TenkiDemo.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// dic property
+		/// </summary>
+		public Dictionary<string, string> Dic
+		{
+			get { return dic; }
+			set
+			{
+				dic = value;
+				Validate ();
+				OnPropertyChanged ("Dic");
+			}
+		}
 
 		/// <summary>
 		/// Performs an asynchronous login
 		/// </summary>
 		/// <returns></returns>
-		public Task<bool> HomeAsync ()
+		public Task<Dictionary<string, string>> HomeAsync ()
 		{
 			IsBusy = true;
+
 			return service
 					.HomeAsync (cityCode)
 					.ContinueOnCurrentThread (t => {
-						IsBusy = false; 
-						return t.Result;
+						//homeViewModel.City = dic["city"];
+						//homeViewModel.Week = dic["week"];
+						//homeViewModel.Temp1 = dic["temp1"];
+						//homeViewModel.Date_y = dic["date_y"];
+						IsBusy = false;
+						dic = t.Result;
+						return dic;
 					});
 		}
-
-
 	}
 }
 
