@@ -2,16 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/myButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
-    <TextView
-        android:text="cityCode"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="116.2dp"
-        android:layout_height="21.6dp"
-        android:id="@+id/cityCode" />
+    android:layout_height="fill_parent"
+    android:clipChildren="true"
+    android:fitsSystemWindows="true"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:baselineAligned="true"
+        android:background="@drawable/sunday">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/temperature" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/climate" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateTime" />
+    </LinearLayout>
 </LinearLayout>

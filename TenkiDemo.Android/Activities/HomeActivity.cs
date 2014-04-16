@@ -10,11 +10,13 @@ using TenkiDemo.Utilities;
 
 namespace TenkiDemo.Android
 {
-	[Activity (Label = "TenkiDemo.Android", MainLauncher = true)]
+	[Activity (Label = "TenkiDemo", Theme = "@android:style/Theme.Holo.Light", MainLauncher = true)]
 	public class HomeActivity : Activity
 	{
 		readonly HomeViewModel homeViewModel;
-		TextView cityCode;
+		TextView temperature;
+		TextView climate;
+		TextView dateTime;
 
 		/// <summary>
 		/// Class constructor
@@ -37,14 +39,20 @@ namespace TenkiDemo.Android
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
-			cityCode = FindViewById<TextView> (Resource.Id.cityCode);
+			temperature = FindViewById<TextView> (Resource.Id.temperature);
+			climate = FindViewById<TextView> (Resource.Id.climate);
+			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
 
 			//cityCode.TextChanged += (sender, e) => {
 			//		homeViewModel.CityCode = userName.Text;
 			//	editsTest.Text = homeViewModel.Username;
 			//};
 
-			homeViewModel.CityCode = cityCode.Text;
+			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
+			this.ActionBar.SetDisplayShowCustomEnabled(true);
+			this.ActionBar.SetDisplayShowHomeEnabled(false); 
+			this.ActionBar.SetDisplayShowTitleEnabled(false); 
+			this.ActionBar.CustomView = customNav;
 
 			homeViewModel
 				.HomeAsync ()
@@ -57,11 +65,17 @@ namespace TenkiDemo.Android
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button> (Resource.Id.myButton);
+			//Button button = FindViewById<Button> (Resource.Id.myButton);
 			
 			//button.Click += delegate {
 			//	userName.Text = string.Format (homeViewModel.GetApiData());
 			//};
+		}
+
+		public override bool OnCreateOptionsMenu (IMenu menu)
+		{
+			//MenuInflater.Inflate (Resource.Menu.HomeActionBarMenu, menu);
+			return base.OnCreateOptionsMenu(menu);
 		}
 	}
 }
