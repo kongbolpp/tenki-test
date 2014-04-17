@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{798322DE-0D37-4A6A-936C-4B8CE405E744}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>TenkiDemo.Android</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AssemblyName>TenkiDemo.Android</AssemblyName>
+    <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>__MOBILE__;__ANDROID__;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Json" />
+
+
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="..\TenkiDemo\Data\HomeService.cs">
+      <Link>TenkiDemo\Data\HomeService.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Data\IHomeService.cs">
+      <Link>TenkiDemo\Data\IHomeService.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Data\PropertyChangedBase.cs">
+      <Link>TenkiDemo\Data\PropertyChangedBase.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Data\ServiceRegistrar.cs">
+      <Link>TenkiDemo\Data\ServiceRegistrar.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\ServiceContainer.cs">
+      <Link>TenkiDemo\Utilities\ServiceContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\TaskExtensions.cs">
+      <Link>TenkiDemo\Utilities\TaskExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\JSON.cs">
+      <Link>TenkiDemo\Utilities\JSON.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\ViewModels\HomeViewModel.cs">
+      <Link>TenkiDemo\ViewModels\HomeViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\ViewModels\ViewModelBase.cs">
+      <Link>TenkiDemo\ViewModels\ViewModelBase.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\menu\HomeActionBarMenu.xml" />
+    <AndroidResource Include="Resources\values\Color.xml" />
+    <AndroidResource Include="Resources\drawable\sunny.png" />
+    <AndroidResource Include="Resources\drawable\sunny_bg.png" />
+    <AndroidResource Include="Resources\drawable\all_city_btn.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Activities\" />
+    <Folder Include="Adapters\" />
+    <Folder Include="Fragments\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="TenkiDemo\" />
+    <Folder Include="TenkiDemo\ViewModels\" />
+    <Folder Include="Resources\menu\" />
+  </ItemGroup>
+</Project>
