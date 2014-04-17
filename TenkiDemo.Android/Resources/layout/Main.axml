@@ -2,31 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/myButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
-    <TextView
-        android:text="cityCode"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="116.2dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/cityCode" />
-    <TextView
-        android:text="cityName"
+    android:layout_height="fill_parent"
+    android:clipChildren="true"
+    android:fitsSystemWindows="true"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cityName" />
-    <TextView
-        android:text="temperature"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/temperature" />
-    <TextView
-        android:text="week"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/week" />
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1"
+        android:baselineAligned="true"
+        android:background="@drawable/sunday">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="15°"
+            android:textSize="80sp"
+            android:textColor="@color/white"
+            android:id="@+id/temperature" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/climate"
+            android:src="@drawable/icon1"
+            android:background="@color/transparent" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateTime" />
+    </LinearLayout>
 </LinearLayout>

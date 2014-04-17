@@ -41,11 +41,54 @@ namespace TenkiDemo.Android
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040001
+			public const int black = 2130968577;
+			
+			// aapt resource value: 0x7f040004
+			public const int blue = 2130968580;
+			
+			// aapt resource value: 0x7f040006
+			public const int dark_blue = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int gold = 2130968583;
+			
+			// aapt resource value: 0x7f040002
+			public const int pink = 2130968578;
+			
+			// aapt resource value: 0x7f040005
+			public const int red = 2130968581;
+			
+			// aapt resource value: 0x7f040003
+			public const int transparent = 2130968579;
+			
+			// aapt resource value: 0x7f040000
+			public const int white = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int icon1 = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int sunday = 2130837506;
 			
 			static Drawable()
 			{
@@ -60,11 +103,23 @@ namespace TenkiDemo.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int cityCode = 2131034113;
+			// aapt resource value: 0x7f070005
+			public const int cityName = 2131165189;
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f070002
+			public const int climate = 2131165186;
+			
+			// aapt resource value: 0x7f070003
+			public const int dateTime = 2131165187;
+			
+			// aapt resource value: 0x7f070004
+			public const int img_merchant = 2131165188;
+			
+			// aapt resource value: 0x7f070000
+			public const int linearLayout1 = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int temperature = 2131165185;
 			
 			static Id()
 			{
@@ -92,14 +147,30 @@ namespace TenkiDemo.Android
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int HomeActionBarMenu = 2131099648;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int app_name = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int hello = 2131034112;
 			
 			static String()
 			{
