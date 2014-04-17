@@ -49,7 +49,6 @@ namespace TenkiDemo.Android
 			temperature = FindViewById<TextView> (Resource.Id.temperature);
 			climate = FindViewById<TextView> (Resource.Id.climate);
 			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
-			cityCode = FindViewById<TextView> (Resource.Id.cityCode);
 			homeViewModel.CityCode = "101070201";
 
 			homeViewModel
