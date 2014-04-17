@@ -103,23 +103,26 @@ namespace TenkiDemo.Android
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070005
-			public const int cityName = 2131165189;
-			
-			// aapt resource value: 0x7f070002
-			public const int climate = 2131165186;
+			// aapt resource value: 0x7f070006
+			public const int cityName = 2131165190;
 			
 			// aapt resource value: 0x7f070003
-			public const int dateTime = 2131165187;
+			public const int climate = 2131165187;
 			
 			// aapt resource value: 0x7f070004
-			public const int img_merchant = 2131165188;
+			public const int dateTime = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int img_merchant = 2131165189;
 			
 			// aapt resource value: 0x7f070000
 			public const int linearLayout1 = 2131165184;
 			
 			// aapt resource value: 0x7f070001
-			public const int temperature = 2131165185;
+			public const int linearLayout2 = 2131165185;
+			
+			// aapt resource value: 0x7f070002
+			public const int temperature = 2131165186;
 			
 			static Id()
 			{
