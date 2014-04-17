@@ -11,7 +11,7 @@
         android:layout_alignParentRight="true"
         android:layout_gravity="right"
         android:scaleType="center"
-        android:src="@drawable/icon1"
+        android:src="@drawable/all_city_btn"
         android:background="@color/transparent">
 </ImageView>
 
