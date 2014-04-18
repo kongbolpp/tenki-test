@@ -13,6 +13,7 @@ namespace TenkiDemo.ViewModels
 		string cityCode;
 		string city;                                 //city
 		string weather;                              //weather
+		string today;
 		string ptime;                                //weather_forecast_time
 		string cityid;                               //cityid
 		string temp1;                                //highest temperature	
@@ -53,7 +54,7 @@ namespace TenkiDemo.ViewModels
 		}
 
 		/// <summary>
-		/// city property
+		/// weather property
 		/// </summary>
 		public string Weather
 		{
@@ -65,6 +66,21 @@ namespace TenkiDemo.ViewModels
 				OnPropertyChanged ("Weather");
 			}
 		}
+
+		/// <summary>
+		/// today property
+		/// </summary>
+		public string Today
+		{
+			get { return today; }
+			set
+			{
+				today = value;
+				Validate ();
+				OnPropertyChanged ("Today");
+			}
+		}
+			
 		/// <summary>
 		/// ptime property
 		/// </summary>
@@ -159,12 +175,14 @@ namespace TenkiDemo.ViewModels
 						Hashtable hashTable = t.Result;
 						City = hashTable["city"].ToString();
 						Weather = hashTable["weather"].ToString();
+						Today = DateTime.Now.ToString("yyyy-MM-dd");
 						Ptime = hashTable["ptime"].ToString();
 						Cityid = hashTable["cityid"].ToString();
 						Temp1 = hashTable["temp1"].ToString();
 						Temp2 = hashTable["temp2"].ToString();
 						Img1 = hashTable["img1"].ToString();
 						Img2 = hashTable["img2"].ToString();
+
 						return hashTable;
 					});
 		}

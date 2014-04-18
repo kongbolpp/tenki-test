@@ -106,29 +106,41 @@ namespace TenkiDemo.Android
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f070001
+			public const int RelativeLayout1 = 2131165185;
+			
+			// aapt resource value: 0x7f07000b
+			public const int cityName = 2131165195;
+			
+			// aapt resource value: 0x7f070008
+			public const int dateTime = 2131165192;
+			
 			// aapt resource value: 0x7f070007
-			public const int cityName = 2131165191;
+			public const int humidity = 2131165191;
 			
-			// aapt resource value: 0x7f070003
-			public const int climate = 2131165187;
-			
-			// aapt resource value: 0x7f070004
-			public const int dateTime = 2131165188;
-			
-			// aapt resource value: 0x7f070006
-			public const int img_merchant = 2131165190;
+			// aapt resource value: 0x7f07000a
+			public const int img_merchant = 2131165194;
 			
 			// aapt resource value: 0x7f070000
 			public const int linearLayout1 = 2131165184;
 			
-			// aapt resource value: 0x7f070001
-			public const int linearLayout2 = 2131165185;
-			
 			// aapt resource value: 0x7f070002
-			public const int temperature = 2131165186;
+			public const int temperature_from = 2131165186;
+			
+			// aapt resource value: 0x7f070004
+			public const int temperature_to = 2131165188;
+			
+			// aapt resource value: 0x7f070003
+			public const int tilde = 2131165187;
+			
+			// aapt resource value: 0x7f070009
+			public const int webviewMain = 2131165193;
 			
 			// aapt resource value: 0x7f070005
-			public const int webviewMain = 2131165189;
+			public const int wheather = 2131165189;
+			
+			// aapt resource value: 0x7f070006
+			public const int wind = 2131165190;
 			
 			static Id()
 			{

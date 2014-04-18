@@ -14,50 +14,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
-            android:id="@+id/linearLayout1"
-            android:baselineAligned="true"
-            android:background="@drawable/sunny_bg">
-        <LinearLayout
-            android:orientation="horizontal"
+        android:baselineAligned="true"
+        android:background="@drawable/sunny_bg">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/linearLayout2"
             android:id="@+id/RelativeLayout1"
             android:background="@color/transparent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
-                android:text="15°"
-                android:textSize="80sp"
+                android:text="15°C"
+                android:textSize="40sp"
                 android:textColor="@color/white"
-                android:id="@+id/temperature" />
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="40dp"
-                android:id="@+id/climate"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                android:layout_toRightOf="@id/temperature"
-                android:id="@+id/wheather"
-                android:src="@drawable/sunny"
-                android:background="@color/transparent" />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dateTime" />
+                android:id="@+id/temperature_from" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/temperature"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/temperature_from"
+                android:text="～"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:id="@+id/tilde" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/tilde"
+                android:text="15°C"
+                android:textSize="40sp"
+                android:textColor="@color/white"
+                android:id="@+id/temperature_to" />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/temperature_to"
+                android:id="@+id/wheather"
+                android:src="@drawable/sunny"
+                android:background="@color/transparent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temperature_from"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="北東風が３～４級"
@@ -67,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/temperature"
+                android:layout_below="@+id/temperature_from"
                 android:layout_toRightOf="@id/wind"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"

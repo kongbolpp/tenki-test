@@ -15,11 +15,8 @@ namespace TenkiDemo.Android
 	public class HomeActivity : Activity
 	{
 		readonly HomeViewModel homeViewModel;
-		TextView temperature;
-
-		ImageView climate;
-		ImageView img_merchant;
-
+		TextView temperature_from;
+		TextView temperature_to;
 		ImageView wheather;
 		TextView wind;
 		TextView humidity;
@@ -43,29 +40,17 @@ namespace TenkiDemo.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
-			this.ActionBar.SetDisplayShowCustomEnabled(true);
-			this.ActionBar.SetDisplayShowHomeEnabled(false); 
-			this.ActionBar.SetDisplayShowTitleEnabled(false); 
-			this.ActionBar.CustomView = customNav;
-			img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
-
-
-
 			InitMenuCustomView ();
-
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			temperature = FindViewById<TextView> (Resource.Id.temperature);
-
-			climate = FindViewById<ImageView> (Resource.Id.climate);
-			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
-
+			temperature_from = FindViewById<TextView> (Resource.Id.temperature_from);
+			temperature_to = FindViewById<TextView> (Resource.Id.temperature_to);
 			wheather = FindViewById<ImageView> (Resource.Id.wheather);
-			wind = FindViewById<ImageView> (Resource.Id.wind);
+			wind = FindViewById<TextView> (Resource.Id.wind);
 			humidity = FindViewById<TextView> (Resource.Id.humidity);
+			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
 
 			homeViewModel.CityCode = "101070201";
 
@@ -73,22 +58,17 @@ namespace TenkiDemo.Android
 				.HomeAsync ()
 				.ContinueWith (_ => {
 					RunOnUiThread (() => {
-						//homeViewModel.dic["city"];
-						Toast.MakeText (this,"******************"+homeViewModel.HashTable["city"]+"*****************",0).Show();
-						Console.Write("**************{0}******************",homeViewModel.HashTable.ToString());
-						//StartActivity (typeof (AssignmentTabActivity));
+						temperature_from.Text = homeViewModel.Temp2;
+						temperature_to.Text = homeViewModel.Temp1;
+						dateTime.Text = homeViewModel.Today;
 					});
 				});
-			// Get our button from the layout resource,
-			// and attach an event to it
-			//Button button = FindViewById<Button> (Resource.Id.myButton);
-			
-			img_merchant.Click += delegate {
-				var second = new Intent(this, typeof(TenkiMapActivity));
 
-				StartActivity(second);
-
-			};
+//			img_merchant.Click += delegate {
+//				var second = new Intent(this, typeof(TenkiMapActivity));
+//
+//				StartActivity(second);
+//			};
 		}
 
 		private void InitMenuCustomView()
