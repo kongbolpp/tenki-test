@@ -15,7 +15,8 @@ namespace TenkiDemo.Android
 	public class HomeActivity : Activity
 	{
 		readonly HomeViewModel homeViewModel;
-		TextView temperature;
+		TextView temperature_from;
+		TextView temperature_to;
 		ImageView wheather;
 		TextView wind;
 		TextView humidity;
@@ -44,7 +45,8 @@ namespace TenkiDemo.Android
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			temperature = FindViewById<TextView> (Resource.Id.temperature);
+			temperature_from = FindViewById<TextView> (Resource.Id.temperature_from);
+			temperature_to = FindViewById<TextView> (Resource.Id.temperature_to);
 			wheather = FindViewById<ImageView> (Resource.Id.wheather);
 			wind = FindViewById<TextView> (Resource.Id.wind);
 			humidity = FindViewById<TextView> (Resource.Id.humidity);
@@ -56,11 +58,9 @@ namespace TenkiDemo.Android
 				.HomeAsync ()
 				.ContinueWith (_ => {
 					RunOnUiThread (() => {
-						//homeViewModel.dic["city"];
-						//Toast.MakeText (this,"******************"+homeViewModel.HashTable["city"]+"*****************",0).Show();
-						//Console.Write("**************{0}******************",homeViewModel.HashTable.ToString());
-						//StartActivity (typeof (AssignmentTabActivity));
-
+						temperature_from.Text = homeViewModel.Temp2;
+						temperature_to.Text = homeViewModel.Temp1;
+						dateTime.Text = homeViewModel.Today;
 					});
 				});
 			// Get our button from the layout resource,
