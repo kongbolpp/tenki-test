@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
+    <Reference Include="System.Json" />
+
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -68,6 +71,9 @@
     </Compile>
     <Compile Include="..\TenkiDemo\Utilities\TaskExtensions.cs">
       <Link>TenkiDemo\Utilities\TaskExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\TenkiDemo\Utilities\JSON.cs">
+      <Link>TenkiDemo\Utilities\JSON.cs</Link>
     </Compile>
     <Compile Include="..\TenkiDemo\ViewModels\HomeViewModel.cs">
       <Link>TenkiDemo\ViewModels\HomeViewModel.cs</Link>
@@ -98,6 +104,7 @@
     <Folder Include="Fragments\" />
     <Folder Include="Utilities\" />
     <Folder Include="TenkiDemo\" />
+    <Folder Include="TenkiDemo\ViewModels\" />
     <Folder Include="Resources\menu\" />
   </ItemGroup>
 </Project>
