@@ -14,19 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/linearLayout1"
-        android:baselineAligned="true"
-        android:background="@drawable/sunny_bg">
+            android:id="@+id/linearLayout1"
+            android:baselineAligned="true"
+            android:background="@drawable/sunny_bg">
         <LinearLayout
             android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/linearLayout2"
+            android:id="@+id/RelativeLayout1"
             android:background="@color/transparent">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:text="15°"
                 android:textSize="80sp"
                 android:textColor="@color/white"
@@ -37,6 +42,11 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="40dp"
                 android:id="@+id/climate"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/temperature"
+                android:id="@+id/wheather"
                 android:src="@drawable/sunny"
                 android:background="@color/transparent" />
         </LinearLayout>
@@ -44,5 +54,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dateTime" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temperature"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="北東風が３～４級"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/wind" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/temperature"
+                android:layout_toRightOf="@id/wind"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="湿度97%"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/humidity" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wind"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="平成２６年四月十七日"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/dateTime" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

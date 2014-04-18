@@ -87,7 +87,6 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\menu\HomeActionBarMenu.xml" />
@@ -96,6 +95,7 @@
     <AndroidResource Include="Resources\drawable\sunny_bg.png" />
     <AndroidResource Include="Resources\drawable\all_city_btn.png" />
     <AndroidResource Include="Resources\layout\TenkiMap.axml" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
