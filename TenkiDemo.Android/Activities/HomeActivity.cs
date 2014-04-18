@@ -45,7 +45,7 @@ namespace TenkiDemo.Android
 			SetContentView (Resource.Layout.Main);
 
 			temperature = FindViewById<TextView> (Resource.Id.temperature);
-			wheather = FindViewById<TextView> (Resource.Id.wheather);
+			wheather = FindViewById<ImageView> (Resource.Id.wheather);
 			wind = FindViewById<TextView> (Resource.Id.wind);
 			humidity = FindViewById<TextView> (Resource.Id.humidity);
 			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
@@ -57,9 +57,10 @@ namespace TenkiDemo.Android
 				.ContinueWith (_ => {
 					RunOnUiThread (() => {
 						//homeViewModel.dic["city"];
-						Toast.MakeText (this,"******************"+homeViewModel.HashTable["city"]+"*****************",0).Show();
-						Console.Write("**************{0}******************",homeViewModel.HashTable.ToString());
+						//Toast.MakeText (this,"******************"+homeViewModel.HashTable["city"]+"*****************",0).Show();
+						//Console.Write("**************{0}******************",homeViewModel.HashTable.ToString());
 						//StartActivity (typeof (AssignmentTabActivity));
+
 					});
 				});
 			// Get our button from the layout resource,

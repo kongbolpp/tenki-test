@@ -10,7 +10,6 @@ namespace TenkiDemo.ViewModels
 	public class HomeViewModel : ViewModelBase
 	{
 		readonly IHomeService service;
-		Hashtable hashTable = new Hashtable ();
 		string cityCode;
 		string city;                                 //city
 		string weather;                              //weather
@@ -145,21 +144,6 @@ namespace TenkiDemo.ViewModels
 			}
 		}
 
-
-		/// <summary>
-		/// hashTable property
-		/// </summary>
-		public Hashtable HashTable
-		{
-			get { return hashTable; }
-			set
-			{
-				hashTable = value;
-				Validate ();
-				OnPropertyChanged ("HashTable");
-			}
-		}
-
 		/// <summary>
 		/// Performs an asynchronous login
 		/// </summary>
@@ -171,12 +155,16 @@ namespace TenkiDemo.ViewModels
 			return service
 					.HomeAsync (cityCode)
 					.ContinueOnCurrentThread (t => {
-						//homeViewModel.City = dic["city"];
-						//homeViewModel.Week = dic["week"];
-						//homeViewModel.Temp1 = dic["temp1"];
-						//homeViewModel.Date_y = dic["date_y"];
 						IsBusy = false;
-						hashTable = t.Result;
+						Hashtable hashTable = t.Result;
+						City = hashTable["city"].ToString();
+						Weather = hashTable["weather"].ToString();
+						Ptime = hashTable["ptime"].ToString();
+						Cityid = hashTable["cityid"].ToString();
+						Temp1 = hashTable["temp1"].ToString();
+						Temp2 = hashTable["temp2"].ToString();
+						Img1 = hashTable["img1"].ToString();
+						Img2 = hashTable["img2"].ToString();
 						return hashTable;
 					});
 		}
