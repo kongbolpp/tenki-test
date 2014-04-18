@@ -16,7 +16,9 @@ namespace TenkiDemo.Android
 	{
 		readonly HomeViewModel homeViewModel;
 		TextView temperature;
-		TextView climate;
+		ImageView wheather;
+		TextView wind;
+		TextView humidity;
 		TextView dateTime;
 
 		/// <summary>
@@ -37,18 +39,17 @@ namespace TenkiDemo.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-
-			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
-			this.ActionBar.SetDisplayShowCustomEnabled(true);
-			this.ActionBar.SetDisplayShowHomeEnabled(false); 
-			this.ActionBar.SetDisplayShowTitleEnabled(false); 
-			this.ActionBar.CustomView = customNav;
+			InitMenuCustomView ();
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
+
 			temperature = FindViewById<TextView> (Resource.Id.temperature);
-			climate = FindViewById<TextView> (Resource.Id.climate);
+			wheather = FindViewById<TextView> (Resource.Id.wheather);
+			wind = FindViewById<TextView> (Resource.Id.wind);
+			humidity = FindViewById<TextView> (Resource.Id.humidity);
 			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
+
 			homeViewModel.CityCode = "101070201";
 
 			homeViewModel
@@ -69,6 +70,15 @@ namespace TenkiDemo.Android
 			//button.Click += delegate {
 			//	userName.Text = string.Format (homeViewModel.GetApiData());
 			//};
+		}
+
+		private void InitMenuCustomView()
+		{
+			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
+			this.ActionBar.SetDisplayShowCustomEnabled(true);
+			this.ActionBar.SetDisplayShowHomeEnabled(false); 
+			this.ActionBar.SetDisplayShowTitleEnabled(false); 
+			this.ActionBar.CustomView = customNav;
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu)
