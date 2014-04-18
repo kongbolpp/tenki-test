@@ -46,8 +46,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="System.Json" />
-
-
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -81,6 +79,7 @@
     <Compile Include="..\TenkiDemo\ViewModels\ViewModelBase.cs">
       <Link>TenkiDemo\ViewModels\ViewModelBase.cs</Link>
     </Compile>
+    <Compile Include="Activities\TenkiMapActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -96,6 +95,7 @@
     <AndroidResource Include="Resources\drawable\sunny.png" />
     <AndroidResource Include="Resources\drawable\sunny_bg.png" />
     <AndroidResource Include="Resources\drawable\all_city_btn.png" />
+    <AndroidResource Include="Resources\layout\TenkiMap.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

@@ -16,8 +16,9 @@ namespace TenkiDemo.Android
 	{
 		readonly HomeViewModel homeViewModel;
 		TextView temperature;
-		TextView climate;
-		TextView dateTime;
+		ImageView climate;
+		ImageView dateTime;
+		ImageView img_merchant;
 
 		/// <summary>
 		/// Class constructor
@@ -43,12 +44,15 @@ namespace TenkiDemo.Android
 			this.ActionBar.SetDisplayShowHomeEnabled(false); 
 			this.ActionBar.SetDisplayShowTitleEnabled(false); 
 			this.ActionBar.CustomView = customNav;
+			img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
+
+
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 			temperature = FindViewById<TextView> (Resource.Id.temperature);
-			climate = FindViewById<TextView> (Resource.Id.climate);
-			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
+			climate = FindViewById<ImageView> (Resource.Id.climate);
+			dateTime = FindViewById<ImageView> (Resource.Id.dateTime);
 			homeViewModel.CityCode = "101070201";
 
 			homeViewModel
@@ -65,9 +69,12 @@ namespace TenkiDemo.Android
 			// and attach an event to it
 			//Button button = FindViewById<Button> (Resource.Id.myButton);
 			
-			//button.Click += delegate {
-			//	userName.Text = string.Format (homeViewModel.GetApiData());
-			//};
+			img_merchant.Click += delegate {
+				var second = new Intent(this, typeof(TenkiMapActivity));
+
+				StartActivity(second);
+
+			};
 		}
 
 		public override bool OnCreateOptionsMenu (IMenu menu)

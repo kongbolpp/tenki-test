@@ -101,7 +101,6 @@ using System.Collections.Generic;
 //					}  
 
 					try {
-						//JSON json = new JSON();
 						Hashtable hashTable = (Hashtable)JSON.JsonDecode(jsonString);
 
 						weatherInfo = (Hashtable)hashTable["weatherinfo"];
