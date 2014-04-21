@@ -20,11 +20,11 @@ namespace TenkiDemo.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			//	TextView tv = new TextView (this);
 			SetContentView (Resource.Layout.TenkiMap);
 			tenkiMap = FindViewById<WebView> (Resource.Id.webviewMain);
 			tenkiMap.Settings.JavaScriptEnabled = true;
 			//tenkiMap.LoadUrl ("file:///android_asset/TenkiMap.html");
+			//tenkiMap.LoadDataWithBaseURL ("file:///android_asset/",somehtml, "text/html", "UTF-8",null);
 			tenkiMap.LoadUrl ("http://www.baidu.com/");
 			tenkiMap.SetWebViewClient (new CustWebViewClient());
 		}

@@ -21,6 +21,7 @@ namespace TenkiDemo.Android
 		TextView wind;
 		TextView humidity;
 		TextView dateTime;
+		ImageView img_merchant;
 
 		/// <summary>
 		/// ホーム画面の構造メソッド
@@ -36,17 +37,11 @@ namespace TenkiDemo.Android
 			SetContentView (Resource.Layout.Main);
 
 			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
-			ImageView img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
 			this.ActionBar.SetDisplayShowCustomEnabled(true);
 			this.ActionBar.SetDisplayShowHomeEnabled(false); 
 			this.ActionBar.SetDisplayShowTitleEnabled(false); 
-
-			/// TODO
-//			img_merchant.Click += delegate {
-//				var second = new Intent(this, typeof(TenkiMapActivity));
-//				StartActivity(second);
-//			};
 			this.ActionBar.CustomView = customNav;
+			img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
 
 			/// 
 			temperature_from = FindViewById<TextView> (Resource.Id.temperature_from);
@@ -55,8 +50,13 @@ namespace TenkiDemo.Android
 			wind = FindViewById<TextView> (Resource.Id.wind);
 			humidity = FindViewById<TextView> (Resource.Id.humidity);
 			dateTime = FindViewById<TextView> (Resource.Id.dateTime);
+			/// TODO
+			img_merchant.Click += delegate {
+				var second = new Intent(this, typeof(TenkiMapActivity));
+				StartActivity(second);
+			};
 
-			homeViewModel.CityCode = "101070201";
+			homeViewModel.CityCode = "101190101";
 
 			// 
 			homeViewModel
