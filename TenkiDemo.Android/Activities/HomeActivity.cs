@@ -36,7 +36,8 @@ namespace TenkiDemo.Android
 			base.OnCreate (bundle);
 			SetContentView (Resource.Layout.Main);
 
-			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
+			View customNav = LayoutInflater.From(this).Inflate(Resource.Layout.HomeActionBarMenu, null);
+			ImageView img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
 			this.ActionBar.SetDisplayShowCustomEnabled(true);
 			this.ActionBar.SetDisplayShowHomeEnabled(false); 
 			this.ActionBar.SetDisplayShowTitleEnabled(false); 
@@ -68,6 +69,7 @@ namespace TenkiDemo.Android
 						dateTime.Text = homeViewModel.Today;
 					});
 				});
+
 		}
 	}
 }
