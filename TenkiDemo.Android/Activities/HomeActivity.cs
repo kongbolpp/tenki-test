@@ -73,7 +73,7 @@ namespace TenkiDemo.Android
 
 		private void InitMenuCustomView()
 		{
-			View customNav = LayoutInflater.From(this).Inflate(Resource.Menu.HomeActionBarMenu, null);
+			View customNav = LayoutInflater.From(this).Inflate(Resource.Layout.HomeActionBarMenu, null);
 			this.ActionBar.SetDisplayShowCustomEnabled(true);
 			this.ActionBar.SetDisplayShowHomeEnabled(false); 
 			this.ActionBar.SetDisplayShowTitleEnabled(false); 

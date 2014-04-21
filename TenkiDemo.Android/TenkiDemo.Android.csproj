@@ -89,13 +89,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\menu\HomeActionBarMenu.xml" />
     <AndroidResource Include="Resources\values\Color.xml" />
     <AndroidResource Include="Resources\drawable\sunny.png" />
     <AndroidResource Include="Resources\drawable\sunny_bg.png" />
     <AndroidResource Include="Resources\drawable\all_city_btn.png" />
     <AndroidResource Include="Resources\layout\TenkiMap.axml" />
     <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\layout\HomeActionBarMenu.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
