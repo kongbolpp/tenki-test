@@ -28,5 +28,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = TenkiDemo.Android\TenkiDemo.Android.csproj
+		version = 1.0
 	EndGlobalSection
 EndGlobal

@@ -23,28 +23,32 @@ namespace TenkiDemo.Android
 		TextView dateTime;
 
 		/// <summary>
-		/// Class constructor
+		/// ホーム画面の構造メソッド
 		/// </summary>
 		public HomeActivity ()
 		{
 			homeViewModel = ServiceContainer.Resolve<HomeViewModel> ();
-
-			//sets valid changed to show the login button.
-			//homeViewModel.IsValidChanged += (sender, e) => {
-			//	if (login != null) {
-			//		login.Enabled = loginViewModel.IsValid ? true : false;
-			//	}
-			//};
 		}
 
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			InitMenuCustomView ();
-
-			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
+			View customNav = LayoutInflater.From(this).Inflate(Resource.Layout.HomeActionBarMenu, null);
+			ImageView img_merchant = FindViewById<ImageView> (Resource.Id.img_merchant);
+			this.ActionBar.SetDisplayShowCustomEnabled(true);
+			this.ActionBar.SetDisplayShowHomeEnabled(false); 
+			this.ActionBar.SetDisplayShowTitleEnabled(false); 
+
+			/// TODO
+//			img_merchant.Click += delegate {
+//				var second = new Intent(this, typeof(TenkiMapActivity));
+//				StartActivity(second);
+//			};
+			this.ActionBar.CustomView = customNav;
+
+			/// 
 			temperature_from = FindViewById<TextView> (Resource.Id.temperature_from);
 			temperature_to = FindViewById<TextView> (Resource.Id.temperature_to);
 			wheather = FindViewById<ImageView> (Resource.Id.wheather);
@@ -54,6 +58,7 @@ namespace TenkiDemo.Android
 
 			homeViewModel.CityCode = "101070201";
 
+			// 
 			homeViewModel
 				.HomeAsync ()
 				.ContinueWith (_ => {
@@ -63,27 +68,11 @@ namespace TenkiDemo.Android
 						dateTime.Text = homeViewModel.Today;
 					});
 				});
-
 //			img_merchant.Click += delegate {
 //				var second = new Intent(this, typeof(TenkiMapActivity));
 //
 //				StartActivity(second);
 //			};
-		}
-
-		private void InitMenuCustomView()
-		{
-			View customNav = LayoutInflater.From(this).Inflate(Resource.Layout.HomeActionBarMenu, null);
-			this.ActionBar.SetDisplayShowCustomEnabled(true);
-			this.ActionBar.SetDisplayShowHomeEnabled(false); 
-			this.ActionBar.SetDisplayShowTitleEnabled(false); 
-			this.ActionBar.CustomView = customNav;
-		}
-
-		public override bool OnCreateOptionsMenu (IMenu menu)
-		{
-			//MenuInflater.Inflate (Resource.Menu.HomeActionBarMenu, menu);
-			return base.OnCreateOptionsMenu(menu);
 		}
 	}
 }
